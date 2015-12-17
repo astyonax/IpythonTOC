@@ -17,13 +17,13 @@ function romanize(num) {
 	return roman;
  }
 
-function shorten(text,length=30){
-	ll=text.length;
-	llnew=Math.min(ll,length-3);
-	if (ll!=llnew){
-		return text.substring(0,llnew)+'...<br/>';
+function shorten(text, length){
+	return text;
+	var llnew=Math.min(text.length,length-3);
+	if (text.length!=llnew){
+		return text.substring(0,llnew);
 	}
-	return text.substring(0,llnew);
+	return text;
 }
 
 // Builds a <ul> Table of Contents from all <headers> in DOM
@@ -36,7 +36,7 @@ function createTOC(maxlvl=2){
     $(":header").each(function(i){
 	    if (this.id=='tocheading'){return;}
         
-	    titleText = shorten(this.innerHTML);
+	    titleText = (this.innerHTML);
 	    openLevel = this.tagName[1];
 
             if (parseInt(openLevel)>maxlvl){return;}
@@ -59,9 +59,10 @@ function createTOC(maxlvl=2){
 
 	    if (this.id==''){this.id = this.innerHTML.replace(/ /g,"-")}
 	    var anchor = this.id;
-        
-	    toc += '<li><a href="#' + anchor + '">' +  romanize(levels[openLevel].toString()) + '. ' + titleText
-		+ '</a></li>';
+            dots='';
+	    if (titleText.length>30) dots='...';
+	    toc += '<li><a href="#' + anchor + '">' +  romanize(levels[openLevel].toString()) + '. ' + titleText.substring(0,30)+
+		dots+  '</a></li>';
         
 	});
 

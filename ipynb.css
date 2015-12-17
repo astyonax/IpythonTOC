@@ -20,7 +20,7 @@ div.output_area img {
 }
 
 #img_nav{
-z-index:99999;
+z-index:99999999;
 position:fixed;
 bottom:10%;
 
@@ -53,7 +53,7 @@ background-color:rgb(255,255,255) !important;
 }
 
 #toc{
-z-index:99999;
+z-index:9999999;
 position:fixed;
 bottom:10%;
 left:-45ex;
